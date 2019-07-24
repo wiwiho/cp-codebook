@@ -1,4 +1,4 @@
-//Segment Tree (for range minimum query)
+//Segment Tree (for range maximum query)
 
 #include <bits/stdc++.h>
 
