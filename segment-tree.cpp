@@ -37,7 +37,7 @@ void build(int l, int r, int id){
  */
 int query(int l, int r, int L, int R, int id){
     if(l == L && r == R) return st[id].max;
-    int m = (l + r) / 2;
+    int m = (L + R) / 2;
     if(r <= m) return query(l, r, L, m, lc(id));
     if(l > m) return query(l, r, m + 1, R, rc(id));
     return max(query(l, m, L, m, lc(id)), query(m + 1, r, m + 1, R, rc(id)));
