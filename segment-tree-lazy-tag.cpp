@@ -38,6 +38,13 @@ void build(int l, int r, int id){
     st[id].max = max(st[lc(id)].max, st[rc(id)].max);
 }
 
+void push(int id){
+    if(!st[id].isLazy()) return;
+    st[lc(id)].tag = st[id].tag;
+    st[rc(id)].tag = st[id].tag;
+    st[id].tag = -MAX;
+}
+
 /**
  * @param l 查詢左界
  * @param r 查詢右界
@@ -48,17 +55,11 @@ void build(int l, int r, int id){
  */
 int query(int l, int r, int L, int R, int id){
     if(l == L && r == R) return st[id].realMax();
+    push(id);
     int m = (L + R) / 2;
     if(r <= m) return query(l, r, L, m, lc(id));
     if(l > m) return query(l, r, m + 1, R, rc(id));
     return max(query(l, m, L, m, lc(id)), query(m + 1, r, m + 1, R, rc(id)));
-}
-
-void push(int id){
-    if(!st[id].isLazy()) return;
-    st[lc(id)].tag = st[id].tag;
-    st[rc(id)].tag = st[id].tag;
-    st[id].tag = -MAX;
 }
 
 /**
