@@ -9,11 +9,14 @@
 #define gsort(a) sort(riter(a))
 #define mp(a, b) make_pair(a, b)
 #define pb(a) push_back(a)
+#define eb(a) emplace_back(a)
 #define pf(a) push_front(a)
 #define pob pop_back()
 #define pof pop_front()
 #define F first
 #define S second
+#define B back()
+#define FR front()
 #define printv(a, b) {bool pvaspace=false; \
 for(auto pva : a){ \
     if(pvaspace) b << " "; pvaspace=true;\
@@ -24,6 +27,8 @@ b << "\n";}
 #define pll pair<ll, ll>
 #define modadd(a, b) (((a % MOD) + (b % MOD)) % MOD)
 #define modtimes(a, b) (((a % MOD) * (b % MOD)) % MOD)
+#define iceil(a) ((int)ceil(a))
+#define ifloor(a) ((int)floor(a))
 
 //#define TEST
 
@@ -38,4 +43,5 @@ const ll MAX = 2147483647;
 int main(){
     StarBurstStream
 
+    return 0;
 }
