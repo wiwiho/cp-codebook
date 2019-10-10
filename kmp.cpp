@@ -4,21 +4,30 @@
 
 using namespace std;
 
-//baluteshih
-int kmp(string& t, string& p){
-
-    vector<int> f(p.size() + 5);
+vector<int> f;
+void build(string& t){
+    f.clear();
+    f.resize(t.size());
+    int p = -1;
     f[0] = -1;
+    for(int i = 1; i < t.size(); i++){
+        while(p != -1 && t[p + 1] != t[i]) p = f[p];
+        if(t[p + 1] == t[i]) f[i] = p + 1;
+        else f[i] = -1;
+        p = f[i];
+    }
+}
+
+int kmp(string& s, string& t){
     int ans = 0;
-    for(int i = 1, j = 0; i < p.size(); f[++i] = ++j){
-        if(p[i] == p[j]) f[i] = f[j];
-        while(j != -1 && p[i] != p[j]) j = f[j];
+    int p = -1;
+    for(int i = 0; i < s.size(); i++){
+        while(p != -1 && t[p + 1] != s[i]) p = f[p];
+        if(t[p + 1] == s[i]) p++;
+        if(p + 1 == t.size()){
+            ans++;
+            p = f[p];
+        }
     }
-    for(int i = 0, j = 0; i - j + p.size() <= t.size(); i++, j++){
-        while(j != -1 && t[i] != p[j]) j = f[j];
-        if(j == p.size() - 1) ans++;
-    }
-    for(int i = 0; i < p.size() + 5; i++) cerr << f[i] << " ";
-    cerr << "\n";
     return ans;
 }
