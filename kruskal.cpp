@@ -17,6 +17,7 @@ int n;
 vector<piii> e;
 
 void initDSU(){
+    p.resize(n);
     for(int i = 0; i < n; i++) p[i] = i;
 }
 
@@ -35,10 +36,10 @@ int kruskal(){
     int ans = 0;
     lsort(e);
     initDSU();
-    for(int i = 0; i < n; i++){
-        int a = e[i].S.F, b = e[i].S.S;
+    for(auto& i : e){
+        int a = i.S.F, b = i.S.S;
         if(findDSU(a) == findDSU(b)) continue;
-        ans += e[i].F;
+        ans += i.F;
         unionDSU(a, b);
     }
     return ans;
