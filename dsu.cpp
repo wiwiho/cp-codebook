@@ -4,21 +4,23 @@
 
 using namespace std;
 
-vector<int> p;
-int n;
+vector<int> dsu, rk;
 
-void initDSU(){
-    p.resize(n);
-    for(int i = 0; i < n; i++) p[i] = i;
+void initDSU(int n){
+    dsu.resize(n);
+    rk.resize(n);
+    for(int i = 0; i < n; i++) dsu[i] = i, rk[i] = 1;
 }
 
 int findDSU(int x){
-    if(p[x] == x) return x;
-    p[x] = findDSU(p[x]);
-    return p[x];
+    if(dsu[x] == x) return x;
+    dsu[x] = findDSU(dsu[x]);
+    return dsu[x];
 }
 
 void unionDSU(int a, int b){
     int pa = findDSU(a), pb = findDSU(b);
-    p[pa] = pb;
+    if(rk[pa] > rk[pb]) swap(pa, pb);
+    if(rk[pa] == rk[pb]) rk[pb]++;
+    dsu[pa] = pb;
 }
