@@ -25,10 +25,9 @@ for(auto pva : a){ \
 b << "\n";}
 #define pii pair<int, int>
 #define pll pair<ll, ll>
-#define modadd(a, b) (((a % MOD) + (b % MOD)) % MOD)
-#define modtimes(a, b) (((a % MOD) * (b % MOD)) % MOD)
-#define iceil(a) ((int)ceil(a))
-#define ifloor(a) ((int)floor(a))
+#define tiii tuple<int, int, int>
+#define mt make_tuple
+#define gt(t, i) get<i>(t)
 
 //#define TEST
 
