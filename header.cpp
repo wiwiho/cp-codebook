@@ -28,6 +28,7 @@ b << "\n";}
 #define tiii tuple<int, int, int>
 #define mt make_tuple
 #define gt(t, i) get<i>(t)
+#define iceil(a, b) ((a) / (b) + !!((a) % (b)))
 
 //#define TEST
 
