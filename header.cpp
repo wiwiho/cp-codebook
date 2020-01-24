@@ -1,6 +1,7 @@
 //#define NDEBUG
 
 #include <bits/stdc++.h>
+#include <bits/extc++.h>
 
 #define StarBurstStream ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define iter(a) a.begin(), a.end()
@@ -15,8 +16,6 @@
 #define pof pop_front()
 #define F first
 #define S second
-#define B back()
-#define FR front()
 #define printv(a, b) {bool pvaspace=false; \
 for(auto pva : a){ \
     if(pvaspace) b << " "; pvaspace=true;\
@@ -36,9 +35,16 @@ typedef long long ll;
 typedef unsigned long long ull;
 
 using namespace std;
+using namespace __gnu_pbds;
 
 const ll MOD = 1000000007;
 const ll MAX = 2147483647;
+
+template<typename A, typename B>
+ostream& operator<<(ostream& o, pair<A, B> p){
+    return o << '(' << p.F << ',' << p.S << ')';
+}
+
 
 int main(){
     StarBurstStream
