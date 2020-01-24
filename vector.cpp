@@ -8,36 +8,37 @@
 
 using namespace std;
 
-#define numt int
-#define pairt pair<numt, numt>
-
-pairt operator+(pairt& a, pairt& b){
+template<typename T>
+T operator+(T a, T b){
     return mp(a.F + b.F, a.S + b.S);
 }
 
-pairt operator-(pairt& a, pairt& b){
+template<typename T>
+T operator-(T a, T b){
     return mp(a.F - b.F, a.S - b.S);
 }
 
-pairt operator*(pairt& a, numt b){
+template<typename T>
+T operator*(T a, T b){
     return mp(a.F * b, a.S * b);
 }
 
-pairt operator/(pairt& a, numt b){
+template<typename T>
+T operator/(T a, T b){
     return mp(a.F / b, a.S / b);
 }
 
-numt dot(pairt& a, pairt& b){
+template<typename T>
+T dot(T a, T b){
     return a.F * b.F + a.S * b.S;
 }
 
-numt cross(pairt& a, pairt& b){
+template<typename T>
+T cross(T a, T b){
     return a.F * b.S - a.S * b.F;
 }
 
-/**
- * @return abs(a)^2
- */
-numt abs2(pairt& a){
+template<typename T>
+T abs2(T a){
     return a.F * a.F + a.S * a.S;
 }
