@@ -14,25 +14,28 @@ typedef long long ll;
 
 using namespace std;
 
-pll operator-(pll a, pll b){
+template<typename T>
+pair<T, T> operator-(pair<T, T> a, pair<T, T> b){
     return mp(a.F - b.F, a.S - b.S);
 }
 
-ll cross(pll a, pll b){
+template<typename T>
+T cross(pair<T, T> a, pair<T, T> b){
     return a.F * b.S - a.S * b.F;
 }
 
-vector<pll> getConvexHull(vector<pll>& pnts){
+template<typename T>
+vector<pair<T, T>> getConvexHull(vector<pair<T, T>>& pnts){
 
     int n = pnts.size();
     lsort(pnts);
 
-    vector<pll> hull;
+    vector<pair<T, T>> hull;
     hull.reserve(n);
 
     for(int i = 0; i < 2; i++){
         int t = hull.size();
-        for(pll pnt : pnts){
+        for(pair<T, T> pnt : pnts){
             while(hull.size() - t >= 2 && cross(hull.back() - hull[hull.size() - 2], pnt - hull[hull.size() - 2]) <= 0){
                 hull.pop_back();
             }
