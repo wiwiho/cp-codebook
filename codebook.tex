@@ -178,6 +178,7 @@ Very large prime numbers:\\
     \item Inversion:\\ $aa^{-1} \equiv 1 \pmod{m}$. $a^{-1}$ exists iff $\gcd(a,m)=1$.
     \item Linear inversion:\\ $a^{-1} \equiv (m - \lfloor\frac{m}{a}\rfloor) \times (m \bmod a)^{-1} \pmod{m}$
     \item Fermat's little theorem:\\ $a^p \equiv a \pmod{p}$ if $p$ is prime.
+    \item Euler function:\\ $\phi(n)=n \prod_{p|n} \frac{p-1}{p}$
     \item Euler theorem:\\ $a^{\phi(n)} \equiv 1 \pmod{n}$ if $\gcd(a,n) = 1$.
     \item Extended Euclidean algorithm:\\
     $ax+by=\gcd(a,b)=\gcd(b, a \bmod b)=\gcd(b, a-\lfloor\frac{a}{b}\rfloor b)=bx_1+(a-\lfloor\frac{a}{b}\rfloor b)y_1=ay_1+b(x_1-\lfloor\frac{a}{b}\rfloor y_1)$
