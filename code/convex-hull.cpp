@@ -1,19 +1,3 @@
-//Andrew's Monotone Chain Algorithm for build a convex hull
-
-#include <bits/stdc++.h>
-
-#define iter(a) a.begin(), a.end()
-#define lsort(a) sort(iter(a))
-#define mp(a, b) make_pair(a, b)
-#define pb(a) push_back(a)
-#define F first
-#define S second
-#define pll pair<ll, ll>
-
-typedef long long ll;
-
-using namespace std;
-
 template<typename T>
 pair<T, T> operator-(pair<T, T> a, pair<T, T> b){
     return mp(a.F - b.F, a.S - b.S);

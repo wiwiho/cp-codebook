@@ -1,13 +1,3 @@
-//Floyd-Warshall algorithm for finding shortest path
-
-#include <bits/stdc++.h>
-
-typedef long long ll;
-
-using namespace std;
-
-const ll MAX = 2147483647;
-
 vector<vector<int>> g;
 int n;
 

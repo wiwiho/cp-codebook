@@ -1,9 +1,3 @@
-//Disjoint Set Union
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector<int> dsu, rk;
 
 void initDSU(int n){

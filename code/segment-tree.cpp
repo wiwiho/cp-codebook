@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 template<typename T>
 struct Node{
     T v = 0, tag = 0;

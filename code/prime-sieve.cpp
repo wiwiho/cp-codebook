@@ -1,11 +1,3 @@
-//Linear sieve of Eratosthenes
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-typedef long long ll;
-
 vector<int> prime;
 vector<int> p;
 void sieve(int n){

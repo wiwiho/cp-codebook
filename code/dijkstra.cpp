@@ -1,17 +1,4 @@
-//Dijkstra algorithm for searching shortest path between 2 vertices
-
-#include <bits/stdc++.h>
-
-#define mp(a, b) make_pair(a, b)
-#define F first
-#define S second
-#define pii pair<int, int>
-
-using namespace std;
-
-/**
- * The first element in pair should be edge weight, and the second should be vertex
- */
+//The first element in pair should be edge weight, and the second should be vertex
 vector<vector<pii>> g;
 int n;
 

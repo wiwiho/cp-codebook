@@ -1,9 +1,3 @@
-//KMP for calculate how many times p appears in t
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector<int> f;
 void build(string& t){
     f.clear();

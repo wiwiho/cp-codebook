@@ -1,16 +1,3 @@
-//SPFA Algorithm for searching shortest path between 2 vertices
-//and check whether there is any negetive cycle in the graph or not
-
-#include <bits/stdc++.h>
-
-#define F first
-#define S second
-#define pii pair<int, int>
- 
-typedef long long ll;
- 
-using namespace std;
-
 const ll INFINITE = 2147483647;
 
 int n;

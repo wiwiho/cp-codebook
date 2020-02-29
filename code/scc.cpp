@@ -1,12 +1,3 @@
-//Tarjan's SCC Algorithm
-
-#include <bits/stdc++.h>
-
-#define eb(a) emplace_back(a)
-#define pob pop_back()
-
-using namespace std;
-
 vector<vector<int>> g;
 vector<int> st;
 vector<bool> inst;

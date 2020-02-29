@@ -1,13 +1,3 @@
-//Functions about vector
-
-#include <bits/stdc++.h>
-
-#define mp(a, b) make_pair(a, b)
-#define F first
-#define S second
-
-using namespace std;
-
 template<typename T>
 pair<T, T> operator+(pair<T, T> a, pair<T, T> b){
     return mp(a.F + b.F, a.S + b.S);

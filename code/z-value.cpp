@@ -1,9 +1,3 @@
-//Z Algorithm
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
 vector<int> z;
 
 void build(string s, int n){

@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-
-typedef long long ll;
-
-using namespace std;
-
 const ll INF = 1LL << 60;
 
 template<typename T>
