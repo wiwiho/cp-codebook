@@ -1,0 +1,187 @@
+\documentclass[twocolumn]{article}
+
+\usepackage[top=1.4cm,bottom=1cm,left=1.3cm,right=1cm]{geometry}
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{changepage}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\lstset{
+language=C++,
+basicstyle=\ttfamily,
+numberstyle=\footnotesize,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=false,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+escapeinside={\%*}{*)},
+morekeywords={*},
+literate={\ \ }{{\ }}1
+}
+
+\begin{document}
+
+\setlength\parindent{0pt}
+
+\tableofcontents
+
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{WiwiHo}
+\fancyhead[C]{Star Burst Stream!!!!!}
+\fancyhead[R]{\thepage}
+
+\section{Template}
+\lstinputlisting{code/header.cpp}
+
+\section{Data Structure}
+
+\subsection{Binary Indexed Tree}
+\lstinputlisting{code/binary-indexed-tree.cpp}
+
+\subsection{Disjoint Set Union-Find}
+\lstinputlisting{code/dsu.cpp}
+
+\subsection{Segment Tree}
+\lstinputlisting{code/segment-tree.cpp}
+
+\section{Graph}
+
+\subsection{Dijkstra}
+\lstinputlisting{code/dijkstra.cpp}
+
+\subsection{Floyd-Warshall}
+\lstinputlisting{code/floyd-warshall.cpp}
+
+\subsection{Kruskal}
+\lstinputlisting{code/kruskal.cpp}
+
+\subsection{Tarjan SCC}
+\lstinputlisting{code/scc.cpp}
+
+\subsection{SPFA}
+\lstinputlisting{code/spfa.cpp}
+
+\section{String}
+
+\subsection{KMP}
+\lstinputlisting{code/kmp.cpp}
+
+\subsection{Z Value}
+\lstinputlisting{code/z-value.cpp}
+
+\section{Geometry}
+
+\subsection{Vector Operations}
+\lstinputlisting{code/vector.cpp}
+
+\subsection{Convex Hull}
+\lstinputlisting{code/convex-hull.cpp}
+
+\section{Number Theory}
+
+\subsection{Prime Sieve}
+\lstinputlisting{code/prime-sieve.cpp}
+
+\section{DP Trick}
+
+\subsection{Dynamic Convex Hull}
+\lstinputlisting{code/dynamic-convex-hull.cpp}
+
+\section{Numbers and Math}
+
+\subsection{Fibonacci}
+
+$$f(n)=f(n-1)+f(n-2)$$
+
+\begin{equation*}
+    \begin{bmatrix}
+        f(n) \\
+        f(n - 1)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix}
+\end{equation*}
+
+\begin{tabular}{r|lllll}
+    1 & 1 & 1 & 2 & 3 & 5 \\
+    6 & 8 & 13 & 21 & 34 & 55\\
+    11 & 89 & 144 & 233 & 377 & 610 \\
+    16 & 987 & 1597 & 2584 & 4181 & 6765\\
+    21 & 10946 & 17711 & 28657 & 46368 & 75025 \\
+    26 & 121393 & 196418 & 317811 & 514229 & 832040 \\
+    31 & 1346269 & 2178309 & 3524578 & 5702887 & 9227465 \\
+\end{tabular}
+
+$f(45) \approx 10^9$\\
+$f(88) \approx 10^{18}$
+
+\subsection{Catalan}
+
+$$C_0=1, C_n=\sum_{i=0}^{n-1} C_i C_{n-1-i}$$
+$$C_n=C_n^{2n}-C_{n-1}^{2n}$$
+
+\begin{tabular}{r|lllll}
+    0 & 1 & 1 & 2 & 5 & 14 \\
+    5 & 42 & 132 & 429 & 1430 & 4862 \\
+    10 & 16796 & 58786 & 208012 & 742900 & 2674440 \\
+    15 & 9694845 & 35357670 & 129644790 & 477638700 & 1767263190
+\end{tabular}
+
+\subsection{Geometry}
+
+\begin{itemize}
+    \item Heron's formula:\\ The area of a triangle whose lengths of sides is $a$,$b$,$c$ and $s = (a + b + c) / 2$ is $\sqrt{s(s-a)(s-b)(s-c)}$.
+    \item Vector cross product:\\ $v_1 \times v_2 = |v_1||v_2| \sin \theta = (x_1 \times y_2) - (x_2 \times y_1)$.
+    \item Vector dot product:\\ $v_1 \cdot v_2 = |v_1||v_2| \cos \theta = (x_1 \times y_1) + (x_2 \times y_2)$.
+\end{itemize}
+
+\subsection{Prime Numbers}
+
+First 50 prime numbers:\\
+\begin{tabular}{r|llllllllll}
+    1 & 2 & 3 & 5 & 7 & 11 & 13 & 17 & 19 & 23 & 29\\
+    11 & 31 & 37 & 41 & 43 & 47 & 53 & 59 & 61 & 67 & 71\\
+    21 & 73 & 79 & 83 & 89 & 97 & 101 & 103 & 107 & 109 & 113\\
+    31 & 127 & 131 & 137 & 139 & 149 & 151 & 157 & 163 & 167 & 173\\
+    41 & 179 & 181 & 191 & 193 & 197 & 199 & 211 & 223 & 227 & 229
+\end{tabular}
+
+Very large prime numbers:\\
+\begin{tabular}{ccccc}
+    1000001333 & 1000500889 & 2000000659 & 900004151 & 850001359
+\end{tabular}
+
+\subsection{Number Theory}
+
+\begin{itemize}
+    \item Inversion:\\ $aa^{-1} \equiv 1 \pmod{m}$. $a^{-1}$ exists iff $\gcd(a,m)=1$.
+    \item Linear inversion:\\ $a^{-1} \equiv (m - \lfloor\frac{m}{a}\rfloor) \times (m \bmod a)^{-1} \pmod{m}$
+    \item Fermat's little theorem:\\ $a^p \equiv a \pmod{p}$ if $p$ is prime.
+    \item Euler theorem:\\ $a^{\phi(n)} \equiv 1 \pmod{n}$ if $\gcd(a,n) = 1$.
+    \item Extended Euclidean algorithm:\\
+    $ax+by=\gcd(a,b)=\gcd(b, a \bmod b)=\gcd(b, a-\lfloor\frac{a}{b}\rfloor b)=bx_1+(a-\lfloor\frac{a}{b}\rfloor b)y_1=ay_1+b(x_1-\lfloor\frac{a}{b}\rfloor y_1)$
+    \item Divisor function:\\ $\sigma_x(n) = \sum_{d|n}d^x$. $n=\prod_{i=1}^r p_i^{a_i}$.\\ $\sigma_x(n)=\prod_{i=1}^r \frac{p_i^{(a_i+1)x}-1}{p_i^x-1}$ if $x \neq 0$. $\sigma_0(n)=\prod_{i=1}^r (a_i+1)$.
+\end{itemize}
+
+\end{document}
