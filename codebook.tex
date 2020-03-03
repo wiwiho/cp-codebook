@@ -4,8 +4,6 @@
 \usepackage{fontspec}
 \usepackage{listings}
 \usepackage{fancyhdr}
-\usepackage{amsthm}
-\usepackage{amssymb}
 \usepackage{changepage}
 \usepackage{color}
 \usepackage{amsmath}
@@ -186,6 +184,9 @@ Very large prime numbers:\\
     \item Extended Euclidean algorithm:\\
     $ax+by=\gcd(a,b)=\gcd(b, a \bmod b)=\gcd(b, a-\lfloor\frac{a}{b}\rfloor b)=bx_1+(a-\lfloor\frac{a}{b}\rfloor b)y_1=ay_1+b(x_1-\lfloor\frac{a}{b}\rfloor y_1)$
     \item Divisor function:\\ $\sigma_x(n) = \sum_{d|n}d^x$. $n=\prod_{i=1}^r p_i^{a_i}$.\\ $\sigma_x(n)=\prod_{i=1}^r \frac{p_i^{(a_i+1)x}-1}{p_i^x-1}$ if $x \neq 0$. $\sigma_0(n)=\prod_{i=1}^r (a_i+1)$.
+    \item Chinese remainder theorem:\\ $x \equiv a_i \pmod{m_i}$.\\
+        $M=\prod m_i$. $M_i=M/m_i$. $t_i=M_i^{-1}$.\\
+        $x = kM + \sum a_i t_i M_i$, $k \in \mathbb{Z}$.
 \end{itemize}
 
 \end{document}
