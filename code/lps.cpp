@@ -1,24 +1,24 @@
 #define T(x) ((x) % 2 ? s[(x) / 2] : '.')
 
 string s;
-int l;
+int L;
 
 int ex(int l, int r){
     int i = 0;
-    while(l - i >= 0 && r + i < l && T(l - i) == T(r + i)) i++;
+    while(l - i >= 0 && r + i < L && T(l - i) == T(r + i)) i++;
     return i;
 }
 
 int lps(string ss){
     s = ss;
-    l = 2 * s.size() + 1;
+    L = 2 * s.size() + 1;
 
     int mx = 0;
     int center = 0;
-    vector<int> r(l);
+    vector<int> r(L);
     int ans = 1;
     r[0] = 1;
-    for(int i = 1; i < l; i++){
+    for(int i = 1; i < L; i++){
         int ii = center - (i - center);
         int len = mx - i + 1;
         if(i > mx){
