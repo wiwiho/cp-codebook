@@ -18,8 +18,8 @@
 #define S second
 #define mt make_tuple
 #define gt(t, i) get<i>(t)
-#define iceil(a, b) ((a + b - 1) / b)
-#define tomax(a, b) (a = max(a, b))
+#define iceil(a, b) (((a) + (b) - 1) / (b))
+#define tomax(a, b) ((a) = max((a), (b)))
 #define printv(a, b) {bool pvaspace=false; \
 for(auto pva : a){ \
     if(pvaspace) b << " "; pvaspace=true;\
