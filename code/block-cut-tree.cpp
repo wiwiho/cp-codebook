@@ -6,7 +6,7 @@ using namespace std;
 
 // tg is the origin graph, g is the result
 vector<vector<int>> tg, g;
-int bcc; // = n, initially
+int bcc; // = n+1, initially
 vector<int> low, in;
 int tts = 1;
 stack<int> st;
