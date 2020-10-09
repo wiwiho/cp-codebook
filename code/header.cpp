@@ -11,6 +11,7 @@
 #define pb(a) push_back(a)
 #define eb(a) emplace_back(a)
 #define pf(a) push_front(a)
+#define ef(a) emplace_front(a)
 #define pob pop_back()
 #define pof pop_front()
 #define mp(a, b) make_pair(a, b)
@@ -20,6 +21,9 @@
 #define gt(t, i) get<i>(t)
 #define iceil(a, b) (((a) + (b) - 1) / (b))
 #define tomax(a, b) ((a) = max((a), (b)))
+#define tomin(a, b) ((a) = min((a), (b)))
+#define topos(a) (((a) % MOD + MOD) % MOD)
+#define uni(a) a.resize(unique(iter(a)) - a.begin())
 #define printv(a, b) {bool pvaspace=false; \
 for(auto pva : a){ \
     if(pvaspace) b << " "; pvaspace=true;\
@@ -51,6 +55,6 @@ ostream& operator<<(ostream& o, pair<A, B> p){
 
 int main(){
     StarBurstStream
-
+    
     return 0;
 }
