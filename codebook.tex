@@ -1,6 +1,6 @@
 \documentclass[twocolumn]{article}
 
-\usepackage[top=1.4cm,bottom=1cm,left=1.3cm,right=1cm]{geometry}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{fontspec}
 \usepackage{listings}
 \usepackage{fancyhdr}
@@ -39,7 +39,7 @@ literate={\ \ }{{\ }}1
 \pagestyle{fancy}
 \fancyfoot{}
 \fancyhead[L]{WiwiHo}
-\fancyhead[C]{Star Burst Stream!!!!!}
+\fancyhead[C]{Codebook with many bugs}
 \fancyhead[R]{\thepage}
 
 \section{Template}
@@ -78,6 +78,9 @@ literate={\ \ }{{\ }}1
 \subsection{SPFA}
 \lstinputlisting{code/spfa.cpp}
 
+\subsection{Block-cut Tree}
+\lstinputlisting{code/block-cut-tree.cpp}
+
 \section{String}
 
 \subsection{KMP}
@@ -92,7 +95,7 @@ literate={\ \ }{{\ }}1
 \subsection{Suffix Array}
 \lstinputlisting{code/sa.cpp}
 
-\section{Geometry}
+\section{Math and Geometry}
 
 \subsection{Vector Operations}
 \lstinputlisting{code/vector.cpp}
@@ -100,17 +103,18 @@ literate={\ \ }{{\ }}1
 \subsection{Convex Hull}
 \lstinputlisting{code/convex-hull.cpp}
 
-\section{Number Theory}
-
 \subsection{Prime Sieve}
 \lstinputlisting{code/prime-sieve.cpp}
+
+\subsection{XOR Basis}
+\lstinputlisting{code/basis.cpp}
 
 \section{DP Trick}
 
 \subsection{Dynamic Convex Hull}
 \lstinputlisting{code/dynamic-convex-hull.cpp}
 
-\section{Numbers and Math}
+\section{Numbers and Math Formulae}
 
 \subsection{Fibonacci}
 
@@ -132,15 +136,19 @@ $$f(n)=f(n-1)+f(n-2)$$
     \end{bmatrix}
 \end{equation*}
 
-\begin{tabular}{r|lllll}
-    1 & 1 & 1 & 2 & 3 & 5 \\
-    6 & 8 & 13 & 21 & 34 & 55\\
-    11 & 89 & 144 & 233 & 377 & 610 \\
-    16 & 987 & 1597 & 2584 & 4181 & 6765\\
-    21 & 10946 & 17711 & 28657 & 46368 & 75025 \\
-    26 & 121393 & 196418 & 317811 & 514229 & 832040 \\
-    31 & 1346269 & 2178309 & 3524578 & 5702887 & 9227465 \\
-\end{tabular}
+\begin{center}
+    \begin{tabular}{r|lllll}
+        1 & 1 & 1 & 2 & 3 \\
+        5 & 5 & 8 & 13 & 21 \\
+        9 & 34 & 55 & 89 & 144 \\
+        13 & 233 & 377 & 610 & 987 \\
+        17 & 1597 & 2584 & 4181 & 6765 \\
+        21 & 10946 & 17711 & 28657 & 46368 \\
+        25 & 75025 & 121393 & 196418 & 317811 \\
+        29 & 514229 & 832040 & 1346269 & 2178309 \\
+        33 & 3524578 & 5702887 & 9227465 & 14930352
+    \end{tabular}
+\end{center}
 
 $f(45) \approx 10^9$\\
 $f(88) \approx 10^{18}$
@@ -150,12 +158,14 @@ $f(88) \approx 10^{18}$
 $$C_0=1, C_n=\sum_{i=0}^{n-1} C_i C_{n-1-i}$$
 $$C_n=C_n^{2n}-C_{n-1}^{2n}$$
 
-\begin{tabular}{r|lllll}
-    0 & 1 & 1 & 2 & 5 & 14 \\
-    5 & 42 & 132 & 429 & 1430 & 4862 \\
-    10 & 16796 & 58786 & 208012 & 742900 & 2674440 \\
-    15 & 9694845 & 35357670 & 129644790 & 477638700 & 1767263190
-\end{tabular}
+\begin{center}
+    \begin{tabular}{r|lllll}
+        0 & 1 & 1 & 2 & 5 \\
+        4 & 14 & 42 & 132 & 429 \\
+        8 & 1430 & 4862 & 16796 & 58786 \\
+        12 & 208012 & 742900 & 2674440 & 9694845
+    \end{tabular}
+\end{center}
 
 \subsection{Geometry}
 
@@ -168,17 +178,25 @@ $$C_n=C_n^{2n}-C_{n-1}^{2n}$$
 \subsection{Prime Numbers}
 
 First 50 prime numbers:\\
-\begin{tabular}{r|llllllllll}
-    1 & 2 & 3 & 5 & 7 & 11 & 13 & 17 & 19 & 23 & 29\\
-    11 & 31 & 37 & 41 & 43 & 47 & 53 & 59 & 61 & 67 & 71\\
-    21 & 73 & 79 & 83 & 89 & 97 & 101 & 103 & 107 & 109 & 113\\
-    31 & 127 & 131 & 137 & 139 & 149 & 151 & 157 & 163 & 167 & 173\\
-    41 & 179 & 181 & 191 & 193 & 197 & 199 & 211 & 223 & 227 & 229
-\end{tabular}
+\begin{center}
+    \begin{tabular}{r|llllllllll}
+        1 & 2 & 3 & 5 & 7 & 11 \\
+        6 & 13 & 17 & 19 & 23 & 29 \\
+        11 & 31 & 37 & 41 & 43 & 47 \\
+        16 & 53 & 59 & 61 & 67 & 71 \\
+        21 & 73 & 79 & 83 & 89 & 97 \\
+        26 & 101 & 103 & 107 & 109 & 113 \\
+        31 & 127 & 131 & 137 & 139 & 149 \\
+        36 & 151 & 157 & 163 & 167 & 173 \\
+        41 & 179 & 181 & 191 & 193 & 197 \\
+        46 & 199 & 211 & 223 & 227 & 229
+    \end{tabular}
+\end{center}
 
 Very large prime numbers:\\
-\begin{tabular}{ccccc}
-    1000001333 & 1000500889 & 2000000659 & 900004151 & 850001359
+\begin{tabular}{ccc}
+    1000001333 & 1000500889 & 2500001909 \\
+    2000000659 & 900004151 & 850001359
 \end{tabular}
 
 \subsection{Number Theory}
@@ -195,6 +213,14 @@ Very large prime numbers:\\
     \item Chinese remainder theorem:\\ $x \equiv a_i \pmod{m_i}$.\\
         $M=\prod m_i$. $M_i=M/m_i$. $t_i=M_i^{-1}$.\\
         $x = kM + \sum a_i t_i M_i$, $k \in \mathbb{Z}$.
+\end{itemize}
+
+\subsection{Combinatorics}
+
+\begin{itemize}
+    \item $P^n_k=\frac{n!}{(n-k)!}$
+    \item $C^n_k=\frac{n!}{(n-k)!k!}$
+    \item $H^n_k=C^{n+k-1}_k=\frac{(n+k-1)!}{k!(n-1)!}$
 \end{itemize}
 
 \end{document}
