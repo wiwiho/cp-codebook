@@ -1,5 +1,3 @@
-//#define NDEBUG
-
 #include <bits/stdc++.h>
 #include <bits/extc++.h>
 
@@ -22,7 +20,7 @@
 #define iceil(a, b) (((a) + (b) - 1) / (b))
 #define tomax(a, b) ((a) = max((a), (b)))
 #define tomin(a, b) ((a) = min((a), (b)))
-#define topos(a) (((a) % MOD + MOD) % MOD)
+#define topos(a) ((a) = (((a) % MOD + MOD) % MOD))
 #define uni(a) a.resize(unique(iter(a)) - a.begin())
 #define printv(a, b) {bool pvaspace=false; \
 for(auto pva : a){ \
@@ -30,8 +28,6 @@ for(auto pva : a){ \
     b << pva;\
 }\
 b << "\n";}
-
-//#define TEST
 
 using namespace std;
 using namespace __gnu_pbds;
@@ -55,6 +51,6 @@ ostream& operator<<(ostream& o, pair<A, B> p){
 
 int main(){
     StarBurstStream
-    
+
     return 0;
 }
