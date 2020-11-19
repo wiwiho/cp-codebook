@@ -17,7 +17,7 @@ struct Treap{
         tr.resize(sz);
     }
 
-    int node(int v){
+    int node(T v){
         int r = ts++;
         tr[r].v = v;
         tr[r].sum = 0;
@@ -72,7 +72,7 @@ struct Treap{
         pull(r);
     }
 
-    void split1(int a, int k, int& r1, int& r2){
+    void split1(int a, T k, int& r1, int& r2){
         if(a == -1){
             r1 = r2 = -1;
             return;
