@@ -1,7 +1,7 @@
 template<typename T>
 struct Node{
     T v = T(), tag = T();
-    int sz = 1, l = -1, r = -1;
+    int l = -1, r = -1;
     int lr = -1, rr = -1;
     T rv(){
         return v + tag * (rr - lr + 1);
