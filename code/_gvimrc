@@ -7,3 +7,4 @@
 :set cursorline
 :set guifont=Consolas:h11
 :set backspace=indent,eol,start
+:syntax enable
