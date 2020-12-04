@@ -47,20 +47,6 @@ inline void PutInt(int a) {
     size_ += 21 - tail;
 }
 
-int check(int n, int x, vector<int>& a, vector<int>& b){
-    vector<pii> tmp;
-    for(int i = 0; i < n; i++){
-        if(a[i] != b[i]) tmp.eb(mp(a[i], b[i]));
-    }
-    lsort(tmp);
-    int lst = x;
-    for(pii i : tmp){
-        if(i.S != lst || i.F <= x) return MAX;
-        lst = i.F;
-    }
-    return tmp.size();
-}
-
 int main(){
     Flush_();
     return 0;
