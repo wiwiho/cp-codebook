@@ -1,58 +1,76 @@
-#include <bits/stdc++.h>
+int n;
 
-#define eb(a) emplace_back(a)
+vector<vector<int>> g;
+vector<int> id;
+vector<bool> iscut, bcccut;
 
-using namespace std;
-
-// tg is the origin graph, g is the result
-vector<vector<int>> tg, g;
-int bcc; // = n+1, initially
-vector<int> low, in;
-int tts = 1;
+vector<vector<int>> tg;
+vector<int> in, low, cnt;
+vector<bool> vst;
+int ts = 1;
 stack<int> st;
-vector<vector<int>> c;
-vector<bool> iscut;
+int bccid = 1;
 
-void dfsbcc(int now, int p){ // calculate low
-    low[now] = in[now] = tts++;
+void init(){
+    tg.resize(n + 1);
+    in.resize(n + 1);
+    low.resize(n + 1);
+    cnt.resize(n + 1);
+    vst.resize(n + 1);
+    id.resize(n + 1, -1);
+    g.resize( 2 * n + 1);
+    iscut.resize(n + 1);
+    bcccut.resize(2 * n + 1);
+}
+
+void addedge(int u, int v){
+    g[u].eb(v);
+    g[v].eb(u);
+}
+
+void dfsc(int now, int p){
+    vst[now] = true;
+    for(int i : tg[now]){
+        if(i == p || vst[i]) continue;
+        cnt[now]++;
+        dfsc(i, now);
+    }
+}
+
+void dfs(int now, int p){
+    in[now] = low[now] = ts++;
+    st.push(now);
     for(int i : tg[now]){
         if(i == p) continue;
         if(in[i]) low[now] = min(low[now], in[i]);
         else{
-            dfsbcc(i, now);
+            dfs(i, now);
             low[now] = min(low[now], low[i]);
-            c[now].eb(i);
+
+            if((now != p && low[i] >= in[now]) || (now == p && cnt[now] > 1)){
+                int nowid = bccid++;
+                while(true){
+                    int x = st.top();
+                    if(iscut[x]) id[x] = nowid;
+                    else addedge(nowid, id[x]);
+                    st.pop();
+                    if(x == i) break;
+                }
+                iscut[now] = true;
+                if(id[now] == -1) id[now] = bccid++;
+                bcccut[id[now]] = true;
+                addedge(id[now], nowid);
+            }
         }
-        if(low[i] >= in[now] && now != 1) iscut[now] = true;
     }
-    if(now == 1 && c[now].size() > 1) iscut[now] = true;
+    if(now == p && cnt[now] == 1 && !iscut[now]){
+        int nowid = bccid++;
+        while(!st.empty()){
+            int x = st.top();
+            if(!iscut[x]) id[x] = nowid;
+            else addedge(nowid, id[x]);
+            st.pop();
+        }
+    }
 }
 
-void dfsbcc2(int now, int p){ // build block-cut tree
-    st.push(now);
-    for(int i : c[now]){
-        dfsbcc2(i, now);
-    }
-    if(now == 1){
-        if(st.size() > 1){
-            while(!st.empty()){
-                g[st.top()].eb(bcc);
-                g[bcc].eb(st.top());
-                st.pop();
-            }
-            bcc++;
-        }
-    }
-    else if((p != 1 && low[now] >= in[p]) || (p == 1 && c[p].size() > 1)){
-        while(!st.empty()){
-            int t = st.top();
-            g[st.top()].eb(bcc);
-            g[bcc].eb(st.top());
-            st.pop();
-            if(t == now) break;
-        }
-        g[bcc].eb(p);
-        g[p].eb(bcc);
-        bcc++;
-    }
-}
