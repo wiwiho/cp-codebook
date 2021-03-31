@@ -1,61 +1,77 @@
-const ll INF = 1LL << 60;
-
-template<typename T>
 struct Line{
-    mutable T a, b, r = 0;
-
-    Line(T a, T b) : a(a), b(b){}
-
-    bool operator<(Line<T> l)const{
-        return a < l.a;
+    ll a, b, l = MIN, r = MAX;
+    Line(ll a, ll b): a(a), b(b) {}
+    ll operator()(ll x) const{
+        return a * x + b;
     }
-
-    bool operator<(T v)const{
-        return r < v;
+    bool operator<(Line b) const{
+        return a < b.a;
+    }
+    bool operator<(ll b) const{
+        return r < b;
     }
 };
 
-template<typename T>
-T divfloor(T a, T b){
-    return a / b - ((a ^ b) < 0 && a % b);
+ll iceil(ll a, ll b){
+    if(b < 0) a *= -1, b *= -1;
+    if(a > 0) return (a + b - 1) / b;
+    else return a / b;
 }
 
-template<typename T>
-struct DynamicHull{
-    multiset<Line<T>, less<>> s;
+ll intersect(Line a, Line b){
+    return iceil(a.b - b.b, b.a - a.a);
+}
 
-    int size(){
-        return s.size();
+struct DynamicConvexHull{
+    multiset<Line, less<>> ch;
+
+    void add(Line ln){
+        auto it = ch.lower_bound(ln);
+        while(it != ch.end()){
+            Line tl = *it;
+            if(tl(tl.r) <= ln(tl.r)){
+                it = ch.erase(it);
+            }
+            else break;
+        }
+        auto it2 = ch.lower_bound(ln);
+        while(it2 != ch.begin()){
+            Line tl = *prev(it2);
+            if(tl(tl.l) <= ln(tl.l)){
+                it2 = ch.erase(prev(it2));
+            }
+            else break;
+        }
+        it = ch.lower_bound(ln);
+        if(it != ch.end()){
+            Line tl = *it;
+            if(tl(tl.l) >= ln(tl.l)) ln.r = tl.l - 1;
+            else{
+                ll pos = intersect(ln, tl);
+                tl.l = pos;
+                ln.r = pos - 1;
+                ch.erase(it);
+                ch.insert(tl);
+            }
+        }
+        it2 = ch.lower_bound(ln);
+        if(it2 != ch.begin()){
+            Line tl = *prev(it2);
+            if(tl(tl.r) >= ln(tl.r)) ln.l = tl.r + 1;
+            else{
+                ll pos = intersect(tl, ln);
+                tl.r = pos - 1;
+                ln.l = pos;
+                ch.erase(prev(it2));
+                ch.insert(tl);
+            }
+        }
+        if(ln.l <= ln.r) ch.insert(ln);
     }
 
-    bool intersect(typename set<Line<T>>::iterator a, typename set<Line<T>>::iterator &b){
-        if(b == s.end()){
-            a->r = INF;
-            return false;
-        }
-        if(a->a == b->a){
-            if(a->b > b->b) a->r = INF;
-            else a->r = -INF;
-        }
-        else{
-            a->r = divfloor(b->b - a->b, a->a - b->a);
-        }
-        return a->r >= b->r;
-    }
-
-    void insert(T a, T b){
-        Line<T> l(a, b);
-        auto it = s.insert(l), after = next(it), before = it;
-        while(intersect(it, after)) after = s.erase(after);
-        if(before != s.begin() && intersect(--before, it)){
-            it = s.erase(it);
-            intersect(before, it);
-        }
-        while((it = before) != s.begin() && (--before)->r >= it->r) intersect(before, it = s.erase(it));
-    }
-
-    T query(T v){
-        Line<T> l = *s.lower_bound(v);
-        return l.a * v + l.b;
+    ll query(ll pos){
+        auto it = ch.lower_bound(pos);
+        if(it == ch.end()) return 0;
+        return (*it)(pos);
     }
 };
