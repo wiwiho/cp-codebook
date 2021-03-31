@@ -17,7 +17,6 @@
 #define S second
 #define mt make_tuple
 #define gt(t, i) get<i>(t)
-#define iceil(a, b) (((a) + (b) - 1) / (b))
 #define tomax(a, b) ((a) = max((a), (b)))
 #define tomin(a, b) ((a) = min((a), (b)))
 #define topos(a) ((a) = (((a) % MOD + MOD) % MOD))
@@ -47,6 +46,18 @@ const ll MAX = 2147483647;
 template<typename A, typename B>
 ostream& operator<<(ostream& o, pair<A, B> p){
     return o << '(' << p.F << ',' << p.S << ')';
+}
+
+ll ifloor(ll a, ll b){
+    if(b < 0) a *= -1, b *= -1;
+    if(a < 0) return (a - b + 1) / b;
+    else return a / b;
+}
+
+ll iceil(ll a, ll b){
+    if(b < 0) a *= -1, b *= -1;
+    if(a > 0) return (a + b - 1) / b;
+    else return a / b;
 }
 
 int main(){
