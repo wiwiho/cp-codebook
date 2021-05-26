@@ -51,7 +51,7 @@ void dfs(int now, int p){
                 int nowid = bccid++;
                 while(true){
                     int x = st.top();
-                    if(iscut[x]) id[x] = nowid;
+                    if(!iscut[x]) id[x] = nowid;
                     else addedge(nowid, id[x]);
                     st.pop();
                     if(x == i) break;
