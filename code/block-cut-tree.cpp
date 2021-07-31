@@ -1,3 +1,11 @@
+/*
+ * g: block-cut tree
+ * id[v]: vertex in block-cut tree which v belongs to
+ * iscut[v]: whether v in origin graph is an articulation
+ * bcccut[v]: whether v in block-cut tree is an articulation
+ * tg: origin graph
+ */
+
 int n;
 
 vector<vector<int>> g;
@@ -5,8 +13,7 @@ vector<int> id;
 vector<bool> iscut, bcccut;
 
 vector<vector<int>> tg;
-vector<int> in, low, cnt;
-vector<bool> vst;
+vector<int> in, low;
 int ts = 1;
 stack<int> st;
 int bccid = 1;
@@ -15,62 +22,52 @@ void init(){
     tg.resize(n + 1);
     in.resize(n + 1);
     low.resize(n + 1);
-    cnt.resize(n + 1);
-    vst.resize(n + 1);
     id.resize(n + 1, -1);
-    g.resize( 2 * n + 1);
+    g.resize(2 * n + 1);
     iscut.resize(n + 1);
     bcccut.resize(2 * n + 1);
 }
 
-void addedge(int u, int v){
-    g[u].eb(v);
-    g[v].eb(u);
-}
-
-void dfsc(int now, int p){
-    vst[now] = true;
-    for(int i : tg[now]){
-        if(i == p || vst[i]) continue;
-        cnt[now]++;
-        dfsc(i, now);
+void addv(int b, int v){
+    if(id[v] == -1){
+        id[v] = b;
+        return;
     }
+    if(!iscut[v]){
+        int o = id[v];
+        iscut[v] = true;
+        id[v] = bccid++;
+        bcccut[id[v]] = true;
+        g[o].eb(id[v]);
+        g[id[v]].eb(o);
+    }
+    g[b].eb(id[v]);
+    g[id[v]].eb(b);
 }
 
 void dfs(int now, int p){
     in[now] = low[now] = ts++;
     st.push(now);
+    int cnt = 0;
     for(int i : tg[now]){
         if(i == p) continue;
         if(in[i]) low[now] = min(low[now], in[i]);
         else{
+            cnt++;
             dfs(i, now);
             low[now] = min(low[now], low[i]);
 
-            if((now != p && low[i] >= in[now]) || (now == p && cnt[now] > 1)){
+            if(low[i] >= in[now]){
                 int nowid = bccid++;
                 while(true){
                     int x = st.top();
-                    if(!iscut[x]) id[x] = nowid;
-                    else addedge(nowid, id[x]);
                     st.pop();
+                    addv(nowid, x);
                     if(x == i) break;
                 }
-                iscut[now] = true;
-                if(id[now] == -1) id[now] = bccid++;
-                bcccut[id[now]] = true;
-                addedge(id[now], nowid);
+                addv(nowid, now);
             }
         }
     }
-    if(now == p && cnt[now] == 1 && !iscut[now]){
-        int nowid = bccid++;
-        while(!st.empty()){
-            int x = st.top();
-            if(!iscut[x]) id[x] = nowid;
-            else addedge(nowid, id[x]);
-            st.pop();
-        }
-    }
+    if(cnt == 0 && now == p) addv(bccid++, now);
 }
-
