@@ -6,9 +6,7 @@
 #define riter(a) a.rbegin(), a.rend()
 #define lsort(a) sort(iter(a))
 #define gsort(a) sort(riter(a))
-#define pb(a) push_back(a)
 #define eb(a) emplace_back(a)
-#define pf(a) push_front(a)
 #define ef(a) emplace_front(a)
 #define pob pop_back()
 #define pof pop_front()
@@ -17,8 +15,6 @@
 #define S second
 #define mt make_tuple
 #define gt(t, i) get<i>(t)
-#define tomax(a, b) ((a) = max((a), (b)))
-#define tomin(a, b) ((a) = min((a), (b)))
 #define topos(a) ((a) = (((a) % MOD + MOD) % MOD))
 #define uni(a) a.resize(unique(iter(a)) - a.begin())
 #define printv(a, b) {bool pvaspace=false; \
